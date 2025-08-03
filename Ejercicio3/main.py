@@ -79,6 +79,84 @@ def bfs(initial, goal, actions):
     else:
         print(f'No se encontró un camino de {initial} a {goal}')
 
+@medicion_rendimiento
+def ids(initial, goal, actions):
+    class Node:
+        def __init__(self, state, parent=None, action=None, depth=0):
+            self.state = state
+            self.parent = parent
+            self.action = action
+            self.depth = depth
+        
+    class Problem:
+        def __init__(self, initial, goal, actions, result, is_goal):
+            self.initial = initial
+            self.goal = goal
+            self.actions = actions
+            self.result = result
+            self.is_goal = is_goal
+    
+    def expand(problem, node):
+        children = []
+        for action in problem.actions(node.state):
+            child_state = problem.result(node.state, action)
+            child_node = Node(child_state, parent=node, action=action, depth=node.depth + 1)
+            children.append(child_node)
+        return children
+    
+    def is_cycle(node):
+        current = node.parent
+        while current is not None:
+            if current.state == node.state:
+                return True
+            current = current.parent
+        return False
+
+    def depth_limited_search(problem, limit):
+        frontier = deque([Node(problem.initial)])
+        result = None
+
+        while frontier:
+            node = frontier.pop()
+
+            if problem.is_goal(node.state):
+                return node
+
+            if node.depth > limit:
+                result = 'cutoff'
+            else:
+                for child in expand(problem, node):
+                    if not is_cycle(child):
+                        frontier.append(child)
+
+        return result
+    
+    def ids_implementation(problem):
+        for depth in range(10):
+            result = depth_limited_search(problem, depth)
+            if result != 'cutoff':
+                return result
+        return None
+    
+    def result(state, action):
+        return action
+    
+    def is_goal(state):
+        return state == goal
+    
+    problem = Problem(initial, goal, lambda s: actions.get(s, []), result, is_goal)
+
+    solution = ids_implementation(problem)
+
+    if solution:
+        path = []
+        while solution:
+            path.append(solution.state)
+            solution = solution.parent
+        path.reverse()
+        print(f'Camino de {initial} a {goal} -> {path}')
+    else:
+        print(f'No se encontró un camino de {initial} a {goal}')
 
 def main():
     initial = input("Enter the initial state: ") or "A"
@@ -96,6 +174,7 @@ def main():
         'J': ['F', 'I']
     }
     bfs(initial, goal, actions)
+    ids(initial, goal, actions)
 
 
 if __name__ == "__main__":

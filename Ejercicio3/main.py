@@ -18,6 +18,17 @@ def medicion_rendimiento(func):
         return result
     return wrapper
 
+def print_solutions(solution, initial, goal):
+    if solution:
+        path = []
+        while solution:
+            path.append(solution.state)
+            solution = solution.parent
+        path.reverse()
+        print(f'Camino de {initial} a {goal} -> {path}')
+    else:
+        print(f'No se encontró un camino de {initial} a {goal}')
+
 @medicion_rendimiento
 def bfs(initial, goal, actions):
     class Node:
@@ -69,15 +80,7 @@ def bfs(initial, goal, actions):
 
     solution = bfs_implementation(problem)
 
-    if solution:
-        path = []
-        while solution:
-            path.append(solution.state)
-            solution = solution.parent
-        path.reverse()
-        print(f'Camino de {initial} a {goal} -> {path}')
-    else:
-        print(f'No se encontró un camino de {initial} a {goal}')
+    print_solutions(solution, initial, goal)
 
 @medicion_rendimiento
 def ids(initial, goal, actions):
@@ -147,16 +150,8 @@ def ids(initial, goal, actions):
     problem = Problem(initial, goal, lambda s: actions.get(s, []), result, is_goal)
 
     solution = ids_implementation(problem)
-
-    if solution:
-        path = []
-        while solution:
-            path.append(solution.state)
-            solution = solution.parent
-        path.reverse()
-        print(f'Camino de {initial} a {goal} -> {path}')
-    else:
-        print(f'No se encontró un camino de {initial} a {goal}')
+    
+    print_solutions(solution, initial, goal)
 
 def main():
     initial = input("Enter the initial state: ") or "A"

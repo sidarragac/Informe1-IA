@@ -168,7 +168,11 @@ def main():
         'I': ['E', 'J'],
         'J': ['F', 'I']
     }
+    print("\n")
+    print("Breadth First Search (BFS) Results:")
     bfs(initial, goal, actions)
+    print("\n")
+    print("Iterative Deepening Search (IDS) Results:")
     ids(initial, goal, actions)
 
 

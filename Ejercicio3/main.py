@@ -1,7 +1,25 @@
 from collections import deque
 import time, tracemalloc
 
-def bfs(actions, initial, goal) -> None:
+def medicion_rendimiento(func):
+    def wrapper(*args, **kwargs):
+        tracemalloc.start()
+        start_time = time.time()
+        
+        result = func(*args, **kwargs)
+        
+        _, peak = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        
+        elapsed_time = time.time() - start_time
+        print(f'Tiempo de ejecución: {elapsed_time:.6f} segundos')
+        print(f'Pico de memoria: {peak / 10**6:.6f} MB')
+        
+        return result
+    return wrapper
+
+@medicion_rendimiento
+def bfs(initial, goal, actions):
     class Node:
         def __init__(self, state, parent=None, action=None):
             self.state = state
@@ -61,19 +79,6 @@ def bfs(actions, initial, goal) -> None:
     else:
         print(f'No se encontró un camino de {initial} a {goal}')
 
-def bfs_execution(initial, goal, actions):
-    tracemalloc.start()
-    start_time = time.time()
-    
-    bfs(actions, initial, goal)
-    
-    current, peak = tracemalloc.get_traced_memory()
-    tracemalloc.stop()
-    
-    elapsed_time = time.time() - start_time
-    print(f'Tiempo de ejecución: {elapsed_time:.6f} segundos')
-    print(f'Memoria usada: {current / 10**6:.6f} MB; Pico de memoria: {peak / 10**6:.6f} MB')
-
 
 def main():
     initial = input("Enter the initial state: ") or "A"
@@ -90,7 +95,7 @@ def main():
         'I': ['E', 'J'],
         'J': ['F', 'I']
     }
-    bfs_execution(initial, goal, actions)
+    bfs(initial, goal, actions)
 
 
 if __name__ == "__main__":

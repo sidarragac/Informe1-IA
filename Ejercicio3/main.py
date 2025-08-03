@@ -154,8 +154,8 @@ def ids(initial, goal, actions):
     print_solutions(solution, initial, goal)
 
 def main():
-    initial = input("Enter the initial state: ") or "A"
-    goal = input("Enter the goal state: ") or "J"
+    initial = input("Ingrese Estación de Salida: ").upper() or "A"
+    goal = input("Ingrese Estación de Llegada: ").upper() or "J"
     actions = {
         'A': ['B', 'C'],
         'B': ['A', 'D', 'E'],

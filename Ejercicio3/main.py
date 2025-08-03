@@ -16,7 +16,7 @@ def bfs(actions, initial, goal) -> None:
             self.result = result
             self.is_goal = is_goal
 
-    def expand(node, problem):
+    def expand(problem, node):
         s = node.state
         for action in problem.actions(s):
             s_prime = problem.result(s, action)
@@ -47,7 +47,7 @@ def bfs(actions, initial, goal) -> None:
     def is_goal(state):
         return state == goal
     
-    problem = Problem(initial, goal, lambda s: actions(s, []), result, is_goal)
+    problem = Problem(initial, goal, lambda s: actions.get(s, []), result, is_goal)
 
     solution = bfs_implementation(problem)
 

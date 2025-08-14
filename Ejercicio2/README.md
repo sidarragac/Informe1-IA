@@ -1,9 +1,9 @@
 # Ejercicio 2
 
-1. [Resolver el ejercicio planteado](#1-resolver-el-ejercicio-planteado)
-2. [¿Cómo cambia el comportamiento del algoritmo si cambiamos la función de costo?](#2-cómo-cambia-el-comportamiento-del-algoritmo-si-cambiamos-la-función-de-costo)
-3. [¿Qué sucede si hay múltiples salidas en el laberinto? ¿Cómo podrías modificar el algoritmo para manejar esto? Plantea una propuesta.](#3-qué-sucede-si-hay-múltiples-salidas-en-el-laberinto-cómo-podrías-modificar-el-algoritmo-para-manejar-esto-plantea-una-propuesta)
-4. [Modifica el laberinto por uno más grande y con otro tipo de obstáculo además de paredes. ¿Qué limitación encuentras en el algoritmo?](#4-modifica-el-laberinto-por-uno-más-grande-y-con-otro-tipo-de-obstáculo-además-de-paredes-qué-limitación-encuentras-en-el-algoritmo)
+- [1. Resolver el ejercicio planteado](#1-resolver-el-ejercicio-planteado)
+- [2. ¿Cómo cambia el comportamiento del algoritmo si cambiamos la función de costo?](#2-cómo-cambia-el-comportamiento-del-algoritmo-si-cambiamos-la-función-de-costo)
+- [3. ¿Qué sucede si hay múltiples salidas en el laberinto? ¿Cómo podrías modificar el algoritmo para manejar esto? Plantea una propuesta.](#3-qué-sucede-si-hay-múltiples-salidas-en-el-laberinto-cómo-podrías-modificar-el-algoritmo-para-manejar-esto-plantea-una-propuesta)
+- [4. Modifica el laberinto por uno más grande y con otro tipo de obstáculo además de paredes. ¿Qué limitación encuentras en el algoritmo?](#4-modifica-el-laberinto-por-uno-más-grande-y-con-otro-tipo-de-obstáculo-además-de-paredes-qué-limitación-encuentras-en-el-algoritmo)
 
 ## 1. Resolver el ejercicio planteado.
 Se toma como base el código suministrado por el profesor y se realizan las siguientes modificaciones para completar el ejercicio:

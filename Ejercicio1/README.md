@@ -2,7 +2,7 @@
 
 - [1. Análisis del problema](#1-análisis-del-problema)
 - [2. Aplicación del algoritmo A*](#2-aplicación-del-algoritmo-a)
-- [3. Por qué la ruta encontrada es óptima](#3-por-qu-la-ruta-encontrada-es-óptima)
+- [3. ¿Por qué la ruta encontrada es óptima?](https://github.com/sidarragac/Informe1-IA/tree/Ejercicio1/Ejercicio1#3-por-qu%C3%A9-la-ruta-encontrada-es-%C3%B3ptima)
 
 ## 1. Análisis del problema
 El problema consiste en encontrar la ruta más corta entre dos ciudades de un mapa, partiendo desde un punto inicial (Arad) hasta un destino (Bucharest).

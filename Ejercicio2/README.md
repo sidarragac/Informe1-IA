@@ -1,4 +1,10 @@
 # Ejercicio 2
+
+1. [Resolver el ejercicio planteado](#1-resolver-el-ejercicio-planteado)
+2. [¿Cómo cambia el comportamiento del algoritmo si cambiamos la función de costo?](#2-cómo-cambia-el-comportamiento-del-algoritmo-si-cambiamos-la-función-de-costo)
+3. [¿Qué sucede si hay múltiples salidas en el laberinto? ¿Cómo podrías modificar el algoritmo para manejar esto? Plantea una propuesta.](#3-qué-sucede-si-hay-múltiples-salidas-en-el-laberinto-cómo-podrías-modificar-el-algoritmo-para-manejar-esto-plantea-una-propuesta)
+4. [Modifica el laberinto por uno más grande y con otro tipo de obstáculo además de paredes. ¿Qué limitación encuentras en el algoritmo?](#4-modifica-el-laberinto-por-uno-más-grande-y-con-otro-tipo-de-obstáculo-además-de-paredes-qué-limitación-encuentras-en-el-algoritmo)
+
 ## 1. Resolver el ejercicio planteado.
 Se toma como base el código suministrado por el profesor y se realizan las siguientes modificaciones para completar el ejercicio:
 
@@ -8,7 +14,7 @@ Se toma como base el código suministrado por el profesor y se realizan las sigu
 - En la función get_neighbors se modifica la variable neighbors (que era una lista) y se convierte en un diccionario para guardar no solo los vecinos a los cuales se puede mover, sino también la acción que hay que realizar para llegar a ese vecino (Up, Down, Left o Right).
 - Finalmente, en la función reconstruct_path, se agregó la lógica para reconstruir también el conjunto de acciones realizadas para llegar de la posición inicial a la final.
 
-- ## 2. ¿Cómo cambia el comportamiento del algoritmo si cambiamos la función de costo?
+## 2. ¿Cómo cambia el comportamiento del algoritmo si cambiamos la función de costo?
 El código original supone que todos los movimientos cuestan 1, pero este costo no se está teniendo en cuenta para la cola de prioridad usada (la prioridad se está dando según la heurística de la distancia Manhattan). Si se deseara cambiar la heurístrica para tener en cuenta el costo, entonces tendríamos una función de tipo f(n) = g(n) + h(n), donde h(n) es la heurística y g(n) sería la función de costo. Este algoritmo ya no sería un greedy best-first search sino que se vuelve una búsqueda A*, que puede ser más costoso computacionalmente que el algoritmo greedy, pero puede encontrar soluciones más óptimas (el greedy no garantiza optimalidad). En este caso todos los movimientos cuestan 1, entonces esta nueva función tendría que optimizar el número de movimientos para ser el menor número posible. El algoritmo podría ser más interesante si cada movimiento tuviera un costo diferente, ya que la solución óptima no sería necesariamente la de menor número de movimientos.
 
 ## 3. ¿Qué sucede si hay múltiples salidas en el laberinto? ¿Cómo podrías modificar el algoritmo para manejar esto? Plantea una propuesta.
